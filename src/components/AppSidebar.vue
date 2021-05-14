@@ -21,6 +21,14 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
+    <v-dialog v-model="link" max-width="344px">
+      <v-card class="mx-auto">
+        <v-card-title>
+          Copy the link below
+        </v-card-title>
+        <v-card-text><code>{{ embedLink }}</code></v-card-text>
+      </v-card>
+    </v-dialog>
   </v-navigation-drawer>
 </template>
 
@@ -35,6 +43,8 @@ import cuid from 'cuid';
 export default class AppSidebar extends Vue {
   drawer = true;
 
+  link =false;
+
   items = [
     { title: 'Save', icon: 'mdi-content-save', click: this.save },
     { title: 'Publish', icon: 'mdi-earth', click: this.publish },
@@ -42,12 +52,19 @@ export default class AppSidebar extends Vue {
 
   mini = true;
 
+  embedId = '';
+
+  get embedLink(): string {
+    return `<script data-name="poptin" src="https://poptin.ucej.tech/cdn.js?popup_id=${this.embedId} />`;
+  }
+
   publish(): void {
     const fd = new FormData();
     const doneElement = document.getElementById('popup-outer-circle');
 
     const styleSheetString = '<link rel="stylesheet" href="./_animation.css" />';
     if (doneElement) {
+      this.embedId = doneElement.dataset.element || cuid();
       const prefixString = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,8 +81,8 @@ export default class AppSidebar extends Vue {
       fd.append('save-popup', '1');
       fd.append('popup-id', doneElement.dataset.element || cuid());
       fd.append('popup-content', prefixString);
-      axios.post('http://poptin.ucej.tech/popup.php', fd).then((w) => {
-        console.log(w);
+      axios.post('http://poptin.ucej.tech/popup.php', fd).then(() => {
+        this.link = true;
       });
       console.log();
     }
