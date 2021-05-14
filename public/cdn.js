@@ -13,7 +13,7 @@ const dStyle = {
       background-color: rgba(0,0,0,0.4);
     `,
   dModalContent: `
-      background-color: #fefefe;
+      background-color: transparent;
       margin: auto;
       padding: 20px;
       width: 80%;
