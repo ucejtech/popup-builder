@@ -55,7 +55,7 @@ export default class AppSidebar extends Vue {
   embedId = '';
 
   get embedLink(): string {
-    return `<script data-name="poptin" src="https://poptin.ucej.tech/cdn.js?popup_id=${this.embedId} />`;
+    return `<script data-name="poptin" src="https://poptin.ucej.tech/cdn.js?popup_id=${this.embedId}" />`;
   }
 
   publish(): void {
