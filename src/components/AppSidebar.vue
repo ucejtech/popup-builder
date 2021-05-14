@@ -26,7 +26,7 @@
         <v-card-title>
           Copy the link below
         </v-card-title>
-        <v-card-text><code>{{ embedLink }}</code></v-card-text>
+        <v-card-text><code v-html="`<script data-name='poptin' src='https://poptin.ucej.tech/cdn.js?popup_id=${embedId}'></script>`"></code></v-card-text>
       </v-card>
     </v-dialog>
   </v-navigation-drawer>
@@ -53,10 +53,6 @@ export default class AppSidebar extends Vue {
   mini = true;
 
   embedId = '';
-
-  get embedLink(): string {
-    return `<script data-name="poptin" src="https://poptin.ucej.tech/cdn.js?popup_id=${this.embedId}" />`;
-  }
 
   publish(): void {
     const fd = new FormData();
