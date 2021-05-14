@@ -78,7 +78,7 @@ function openIframe() {
   createAnElement(
     "myModal2",
     "iframe",
-    ["dFrame", ["src", `http://poptin.ucejt.tech/popups/${POPUPID}/public.html`]],
+    ["dFrame", ["src", `http://poptin.ucej.tech/popups/${POPUPID}/public.html`]],
     dStyle.dIframe
   );
   document.getElementById("myModal").style.display = "block";
