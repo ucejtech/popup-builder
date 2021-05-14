@@ -64,7 +64,7 @@ export default class AppSidebar extends Vue {
       fd.append('save-popup', '1');
       fd.append('popup-id', doneElement.dataset.element || cuid());
       fd.append('popup-content', prefixString);
-      axios.post('http://localhost/poptin/index.php', fd).then((w) => {
+      axios.post('http://poptin.ucej.tech/popup.php', fd).then((w) => {
         console.log(w);
       });
       console.log();
