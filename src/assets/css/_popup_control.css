@@ -1,0 +1,4 @@
+.focused-element {
+    border: 1px dashed #000 !important;
+    outline: none !important;
+}

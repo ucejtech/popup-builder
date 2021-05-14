@@ -1,32 +1,48 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <app-sidebar />
+    <v-main>
+      <app-toolbar />
+      <app-tools-drawer />
+      <router-view class="pa-6" />
+    </v-main>
+    <v-snackbar v-model="snackbar" >
+      {{ text }}
+    </v-snackbar>
+  </v-app>
 </template>
 
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import EventBus from './app/eventBus';
+import AppSidebar from './components/AppSidebar.vue';
+import AppToolbar from './components/AppToolbar.vue';
+import AppToolsDrawer from './components/AppToolsDrawer.vue';
+
+@Component({
+  components: {
+    AppSidebar,
+    AppToolbar,
+    AppToolsDrawer,
+  },
+})
+export default class extends Vue {
+  snackbar = false;
+
+  text = '';
+
+  created(): void {
+    EventBus.$on('fire:snackbar', (text: string) => {
+      this.text = text;
+      this.snackbar = true;
+    });
+  }
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.v-application {
+  background: #eee !important;
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+@import url('./assets/css/global.css');
 </style>

@@ -1,0 +1,9 @@
+.capitalize {
+    text-transform: capitalize !important;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+/* .po */
