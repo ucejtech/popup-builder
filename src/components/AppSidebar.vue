@@ -26,7 +26,7 @@
         <v-card-title>
           Copy the link below
         </v-card-title>
-        <v-card-text><code v-html="`<script data-name='poptin' src='https://poptin.ucej.tech/cdn.js?popup_id=${embedId}'></script>`"></code></v-card-text>
+        <v-card-text><code v-text="`<script data-name='poptin' src='http://poptin.ucej.tech/cdn.js?popup_id=${embedId}'></script>`"></code></v-card-text>
       </v-card>
     </v-dialog>
   </v-navigation-drawer>

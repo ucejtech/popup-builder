@@ -119,7 +119,7 @@ import { editables } from '../app/defaultPopup';
   },
 })
 export default class AppToolsDrawer extends Vue {
-  entryEffect = '';
+  entryEffect = 'fadeInDown';
 
   get cssEntryEffect(): string {
     return this.entryEffect;
