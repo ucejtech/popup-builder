@@ -38,67 +38,67 @@ const dStyle = {
       height: 100%;
       width: 100%;
       z-index: 99999;
-    `
+    `,
 };
 
-let POPUPID = "";
+let POPUPID = '';
 
 window.onload = document.addEventListener(
-  "DOMContentLoaded",
+  'DOMContentLoaded',
   () => {
-    const url = new URL(document.querySelector('[data-name="poptin"]').getAttribute("src"));
-    POPUPID = url.search.split("=")[1];
+    const url = new URL(document.querySelector('[data-name="poptin"]').getAttribute('src'));
+    POPUPID = url.search.split('=')[1];
 
-    const bodyDocument = document.getElementsByTagName("body")[0];
-    bodyDocument.setAttribute("onclick", "closeOnModal()");
+    const bodyDocument = document.getElementsByTagName('body')[0];
+    bodyDocument.setAttribute('onclick', 'closeOnModal()');
     // Create Modal
-    createAnElement("pass", "div", ["myModal"], "display: none");
+    createAnElement('pass', 'div', ['myModal'], 'display: none');
     setTimeout(() => {
       openIframe();
     }, 1000);
   },
-  false
+  false,
 );
 
 function openIframe() {
   // Create Modal-Content card
-  createAnElement("myModal", "div", ["myModal2"], dStyle.dModalContent);
+  createAnElement('myModal', 'div', ['myModal2'], dStyle.dModalContent);
 
   // Create close button
   createAnElement(
-    "myModal2",
-    "span",
-    ["dClose", ["onclick", "g()"]],
+    'myModal2',
+    'span',
+    ['dClose', ['onclick', 'g()']],
     dStyle.dModalClose,
-    "&times;"
+    '&times;',
   );
 
-  document.getElementById("myModal").style.cssText = dStyle.dModal;
+  document.getElementById('myModal').style.cssText = dStyle.dModal;
   // Create Iframe
   createAnElement(
-    "myModal2",
-    "iframe",
-    ["dFrame", ["src", `http://poptin.ucej.tech/popups/${POPUPID}/public.html`]],
-    dStyle.dIframe
+    'myModal2',
+    'iframe',
+    ['dFrame', ['src', `http://poptin.ucej.tech/popups/${POPUPID}/public.html`]],
+    dStyle.dIframe,
   );
-  document.getElementById("myModal").style.display = "block";
+  document.getElementById('myModal').style.display = 'block';
 }
 
 function closeModal() {
-  document.getElementById("myModal").style.display = "none";
-  removeElement("dFrame");
+  document.getElementById('myModal').style.display = 'none';
+  removeElement('dFrame');
 }
 
 // click Modal
 function closeOnModal() {
-  if (event.target == document.getElementById("myModal")) {
+  if (event.target == document.getElementById('myModal')) {
     g();
   }
 }
 
 function g() {
-  document.getElementById("myModal").style.display = "none";
-  removeElement("dFrame");
+  document.getElementById('myModal').style.display = 'none';
+  removeElement('dFrame');
 }
 
 // Element Creation
@@ -107,10 +107,10 @@ function createAnElement(parentId, elementTag, elementId, style, html = null) {
   createdElement.style.cssText = style;
 
   if (html) createdElement.innerHTML = html;
-  createdElement.setAttribute("id", elementId[0]);
+  createdElement.setAttribute('id', elementId[0]);
   if (elementId.length > 1) createdElement.setAttribute(`${elementId[1][0]}`, `${elementId[1][1]}`);
-  if (parentId == "pass") {
-    const dParentElement = document.getElementById("button").parentNode;
+  if (parentId == 'pass') {
+    const dParentElement = document.getElementById('button').parentNode;
     dParentElement.appendChild(createdElement);
   } else document.getElementById(parentId).appendChild(createdElement);
 }
