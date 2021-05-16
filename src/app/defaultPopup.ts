@@ -19,6 +19,7 @@ const defaultPopupTemplateStyles = {
       borderWidth: '4px',
       borderStyle: 'solid',
       direction: 'ltr',
+      boxSizing: 'border-box',
     },
   },
   'popup-inner-circle': {
@@ -34,8 +35,9 @@ const defaultPopupTemplateStyles = {
       borderColor: 'rgb(223, 122, 94)',
       borderWidth: '0px',
       borderStyle: 'solid',
-      transform: 'translate(8.59998px, 7.60001px)',
+      transform: 'translate(6.59998px, 6.60001px)',
       direction: 'ltr',
+      boxSizing: 'border-box',
     },
   },
   'popup-star-1': {
@@ -53,6 +55,7 @@ const defaultPopupTemplateStyles = {
       textAlign: 'center',
       fontSize: '35px',
       direction: 'ltr',
+      boxSizing: 'border-box',
     },
   },
   'popup-star-2': {
@@ -70,6 +73,7 @@ const defaultPopupTemplateStyles = {
       textAlign: 'center',
       fontSize: '35px',
       direction: 'ltr',
+      boxSizing: 'border-box',
     },
   },
   'popup-star-3': {
@@ -87,6 +91,7 @@ const defaultPopupTemplateStyles = {
       textAlign: 'center',
       fontSize: '35px',
       direction: 'ltr',
+      boxSizing: 'border-box',
     },
   },
   'popup-text-1': {
@@ -104,6 +109,7 @@ const defaultPopupTemplateStyles = {
       textAlign: 'center',
       fontSize: '23px',
       direction: 'ltr',
+      boxSizing: 'border-box',
     },
   },
   'popup-text-2': {
@@ -121,6 +127,7 @@ const defaultPopupTemplateStyles = {
       textAlign: 'center',
       fontSize: '15px',
       direction: 'ltr',
+      boxSizing: 'border-box',
     },
   },
   'popup-input-1': {
@@ -137,6 +144,8 @@ const defaultPopupTemplateStyles = {
       paddingRight: '10px',
       paddingLeft: '10px',
       direction: 'rtl',
+      borderStyle: 'none',
+      boxSizing: 'border-box',
     },
   },
   'popup-button': {
@@ -156,6 +165,8 @@ const defaultPopupTemplateStyles = {
       width: '300px',
       height: '50.5px',
       backgroundColor: '#000000',
+      borderStyle: 'none',
+      boxSizing: 'border-box',
     },
   },
 };

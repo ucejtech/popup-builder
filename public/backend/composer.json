@@ -1,0 +1,13 @@
+{
+    "name": "ucejtech/popup-builder",
+    "type": "project",
+    "require": {
+        "rakibtg/sleekdb": "^2.10"
+    },
+    "authors": [
+        {
+            "name": "ucejtech",
+            "email": "ucejtech@gmail.com"
+        }
+    ]
+}

@@ -58,29 +58,15 @@ export default class AppSidebar extends Vue {
     const fd = new FormData();
     const doneElement = document.getElementById('popup-outer-circle');
 
-    const styleSheetString = '<link rel="stylesheet" href="./_animation.css" />';
     if (doneElement) {
       this.embedId = doneElement.dataset.element || cuid();
-      const prefixString = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    ${styleSheetString}
-</head>
-<body>
-    ${doneElement.outerHTML}
-</body>
-</html>`;
       fd.append('save-popup', '1');
       fd.append('popup-id', doneElement.dataset.element || cuid());
-      fd.append('popup-content', prefixString);
-      axios.post('http://poptin.ucej.tech/popup.php', fd).then(() => {
+      fd.append('popup-content', doneElement.outerHTML);
+      axios.post('http://localhost/poptin/popup.php', fd).then((w) => {
         this.link = true;
+        console.log(w);
       });
-      console.log();
     }
   }
 

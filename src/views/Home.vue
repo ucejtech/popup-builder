@@ -12,7 +12,7 @@
       tabindex="-1"
     >
       <div
-        class="popup-block draggable"
+        class="draggable"
         data-element="div"
         data-x="5.5999755859375"
         data-y="5.600006103515625"
