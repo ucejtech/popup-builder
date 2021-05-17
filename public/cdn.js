@@ -1,16 +1,16 @@
-const url = "http://poptin.ucej.tech/backend/popup.php";
+const url = 'http://poptin.ucej.tech/backend/popup.php';
 
-let POPUPID = "";
+let POPUPID = '';
 
-const styleSheetLink = "http://poptin.ucej.tech/_animation.css";
+const styleSheetLink = 'http://poptin.ucej.tech/_animation.css';
 
-const jsUrl = new URL(document.querySelector('[data-name="poptin"]').getAttribute("src"));
-POPUPID = jsUrl.search.split("=")[1];
+const jsUrl = new URL(document.querySelector('[data-name="poptin"]').getAttribute('src'));
+POPUPID = jsUrl.search.split('=')[1];
 
 let popupLoaded = false;
-let popupContent = "";
+let popupContent = '';
 
-fetch(`${url}?popup_id=${POPUPID}`).then(async res => {
+fetch(`${url}?popup_id=${POPUPID}`).then(async (res) => {
   const popupResponse = JSON.parse(await res.text());
   if (popupResponse.error) {
     console.log(`Could not load popup: ${popupResponse.msg}`);
@@ -60,7 +60,7 @@ const dStyle = {
       height: 100%;
       width: 100%;
       z-index: 99999;
-    `
+    `,
 };
 
 // Element Creation
@@ -69,14 +69,14 @@ function createAnElement(parentId, elementTag, elementId, style, html = null) {
   if (style) createdElement.style.cssText = style;
 
   if (html) createdElement.innerHTML = html;
-  createdElement.setAttribute("id", elementId[0]);
+  createdElement.setAttribute('id', elementId[0]);
   if (elementId.length > 1) {
     elementId.shift();
-    elementId.map(item => {
+    elementId.map((item) => {
       createdElement.setAttribute(`${item[0]}`, `${item[1]}`);
     });
   }
-  if (parentId === "pass") {
+  if (parentId === 'pass') {
     document.body.appendChild(createdElement);
   } else document.getElementById(parentId).appendChild(createdElement);
 }
@@ -87,57 +87,57 @@ function removeElement(elementId) {
   element.parentNode.removeChild(element);
 }
 function g() {
-  document.getElementById("myModal").style.display = "none";
-  removeElement("dFrame");
+  document.getElementById('myModal').style.display = 'none';
+  removeElement('dFrame');
 }
 // click Modal
 function closeOnModal(event) {
-  if (event.target === document.getElementById("myModal")) {
+  if (event.target === document.getElementById('myModal')) {
     g();
   }
 }
 function closeModal() {
-  document.getElementById("myModal").style.display = "none";
-  removeElement("dFrame");
+  document.getElementById('myModal').style.display = 'none';
+  removeElement('dFrame');
 }
 
 function loadPopup(content) {
-  createAnElement("myModal", "div", ["myModal2"], dStyle.dModalContent);
+  createAnElement('myModal', 'div', ['myModal2'], dStyle.dModalContent);
 
   // Create close button
   createAnElement(
-    "myModal2",
-    "span",
-    ["dClose", ["onclick", "g()"]],
+    'myModal2',
+    'span',
+    ['dClose', ['onclick', 'g()']],
     dStyle.dModalClose,
-    "&times;"
+    '&times;',
   );
 
-  document.getElementById("myModal").style.cssText = dStyle.dModal;
+  document.getElementById('myModal').style.cssText = dStyle.dModal;
   // Append Content
   // console.log(content)
-  document.getElementById("myModal2").innerHTML += content;
-  document.getElementById("myModal").style.display = "block";
+  document.getElementById('myModal2').innerHTML += content;
+  document.getElementById('myModal').style.display = 'block';
 }
 
 window.onload = document.addEventListener(
-  "DOMContentLoaded",
+  'DOMContentLoaded',
   () => {
-    const bodyDocument = document.getElementsByTagName("body")[0];
-    bodyDocument.setAttribute("onclick", "closeOnModal");
+    const bodyDocument = document.getElementsByTagName('body')[0];
+    bodyDocument.setAttribute('onclick', 'closeOnModal');
     // add animation stylesheet
-    createAnElement("pass", "link", [
-      "animation-link",
-      ["rel", "stylesheet"],
-      ["href", styleSheetLink]
+    createAnElement('pass', 'link', [
+      'animation-link',
+      ['rel', 'stylesheet'],
+      ['href', styleSheetLink],
     ]);
     // Create Modal
-    createAnElement("pass", "div", ["myModal"], "display: none");
+    createAnElement('pass', 'div', ['myModal'], 'display: none');
     setTimeout(() => {
       if (popupLoaded) {
         loadPopup(popupContent);
       }
     }, 1000);
   },
-  false
+  false,
 );

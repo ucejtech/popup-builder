@@ -113,11 +113,9 @@ import DefaultPopup from '../components/commons/popups/Default/Default.vue';
       const style = document.getElementById(id)?.style as
         | Record<string, string>
         | undefined;
-      const editedProperty = 'transform';
 
       const newStyle = {
-        edited: editedProperty,
-        value: style?.[editedProperty] || style?.transform,
+        value: { left: style?.left, top: style?.top },
       };
       this.$store.dispatch('UpdatePopUpTemplate', { id, newStyle });
     });
@@ -133,6 +131,10 @@ export default class Home extends Vue {
 
   $(el: string): HTMLElement | null {
     return document.getElementById(el);
+  }
+
+  mounted(): void {
+    console.log(JSON.stringify(this.popupTemplate));
   }
 
   editElement(ev: ICustomEvent): void {

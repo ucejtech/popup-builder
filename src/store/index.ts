@@ -22,7 +22,10 @@ export default new Vuex.Store<RootState>({
     UPDATE_POPUP(state: RootState, { id, newStyle }) {
       const affectedElement = state.popupTemplateStyles[id as string];
       if (affectedElement) {
-        affectedElement.styles[newStyle.edited] = newStyle.value;
+        const { left, top } = newStyle.value;
+        console.log(affectedElement, left, top);
+        affectedElement.styles.left = left;
+        affectedElement.styles.top = top;
       }
     },
   },

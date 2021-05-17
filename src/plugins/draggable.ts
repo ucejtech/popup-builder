@@ -11,7 +11,9 @@ function dragMoveListener(event: ICustomEvent) {
     const y = (parseFloat(target.getAttribute('data-y') || '') || 0) + event.dy;
 
     // translate the element
-    target.style.transform = `translate(${x}px, ${y}px)`;
+    // target.style.transform = `translate(${x}px, ${y}px)`;
+    target.style.left = `${x}px`;
+    target.style.top = `${y}px`;
 
     // update the position attributes
     target.setAttribute('data-x', `${x}`);
